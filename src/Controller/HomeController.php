@@ -6,13 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class HomeController extends AbstractController
+class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_home')]
     public function index(): Response
     {
+        $langues = [
+            ['code' => 'EN', 'nom' => 'Anglais',  'accroche' => 'Speak with confidence', 'classe' => 'en'],
+            ['code' => 'DE', 'nom' => 'Allemand', 'accroche' => 'Sprechen Sie frei',      'classe' => 'de'],
+            ['code' => 'ES', 'nom' => 'Espagnol', 'accroche' => 'Habla con soltura',      'classe' => 'es'],
+        ];
+
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'langues' => $langues,
+            'semestre' => 'Second semestre',
         ]);
     }
 }
