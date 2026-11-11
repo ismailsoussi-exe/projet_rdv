@@ -1,0 +1,35 @@
+{# Maquette : Gestion – Connexion #}
+{% extends 'gestion/base.html.twig' %}
+
+{% block title %}Connexion gestionnaire{% endblock %}
+
+{% block titre_site %}Oraux de langues – Prépa{% endblock %}
+{% block sous_titre %}Espace gestionnaire{% endblock %}
+
+{% block body %}
+<main class="connexion">
+    <form method="post" action="{{ path('app_login') }}" class="connexion-carte">
+        <h1>Connexion</h1>
+        <p class="connexion-intro">Réservé aux gestionnaires des oraux.</p>
+
+        {% if error %}
+            <div class="message message-erreur" role="alert">Identifiant ou mot de passe incorrect.</div>
+        {% endif %}
+
+        <div class="champ">
+            <label for="login">Identifiant</label>
+            <input id="login" type="text" name="_username" value="{{ last_username }}" autocomplete="username" required autofocus>
+        </div>
+        <div class="champ">
+            <label for="mdp">Mot de passe</label>
+            <input id="mdp" type="password" name="_password" autocomplete="current-password" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button type="submit" class="bouton bouton-large">Se connecter</button>
+        <a href="#" class="connexion-oubli">Mot de passe oublié ?</a>
+    </form>
+    <p class="connexion-retour"><a href="{{ path('app_home') }}">‹ Retour au site étudiant</a></p>
+</main>
+{% endblock %}

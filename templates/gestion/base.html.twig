@@ -1,0 +1,30 @@
+{# Gabarit de l'application (style de la maquette validée).
+   La page d'accueil (home/index.html.twig) garde le gabarit base.html.twig. #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Oraux de langues{% endblock %} · UCL</title>
+    <link rel="stylesheet" href="{{ asset('css/gestion.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="app">
+    <header class="app-header">
+        <div class="app-header-inner">
+            <div class="app-titre">{% block titre_site %}Oraux de langues – Gestion{% endblock %}</div>
+            <div class="app-sous-titre">
+                {% block sous_titre %}
+                    {% if app.user %}Connecté : {{ app.user.userIdentifier }}{% else %}Espace gestionnaire{% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </header>
+
+    {% block nav %}{% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

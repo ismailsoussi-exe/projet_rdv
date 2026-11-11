@@ -1,0 +1,22 @@
+{# Page d'arrivée après connexion. Sera remplacée par la maquette Gestion – Planning. #}
+{% extends 'gestion/base.html.twig' %}
+
+{% block title %}Planning – gestionnaire{% endblock %}
+
+{% block nav %}
+<nav class="app-nav">
+    <div class="app-nav-inner">
+        <a href="{{ path('app_admin') }}" class="actif">Planning</a>
+        {# Créneaux, Professeurs et Exports Excel : ajoutés quand leurs pages existeront. #}
+        <a href="{{ path('app_home') }}">Voir le côté étudiant</a>
+        <a href="{{ path('app_logout') }}" class="a-droite">Déconnexion</a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block body %}
+<main class="app-main">
+    <h1>Planning des oraux</h1>
+    <div class="encadre">Vous êtes connecté. Le planning des oraux sera affiché ici.</div>
+</main>
+{% endblock %}
